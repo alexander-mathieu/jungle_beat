@@ -5,8 +5,10 @@ require './lib/linked_list'
 
 RSpec.describe LinkedList do
   before :each do
-    @node_1        = Node.new('Node 1')
-    @node_2        = Node.new('Node 2')
+    @node_1      = Node.new('Node 1')
+    @node_2      = Node.new('Node 2')
+    @node_3      = Node.new('Node 3')
+
     @linked_list = LinkedList.new
   end
 
@@ -49,6 +51,24 @@ RSpec.describe LinkedList do
       @linked_list.append(@node_2)
 
       expect(@linked_list.to_string).to eq('Node 1 Node 2')
+    end
+
+    it '.prepend' do
+      @linked_list.append(@node_1)
+      @linked_list.append(@node_2)
+
+      @linked_list.prepend(@node_3)
+
+      expect(@linked_list.to_string).to eq('Node 3 Node 2 Node 1')
+    end
+
+    it '.insert' do
+      @linked_list.append(@node_1)
+      @linked_list.append(@node_2)
+
+      @linked_list.insert(1, @node_3)
+
+      expect(@linked_list.to_string).to eq('Node 1 Node 3 Node 2')
     end
   end
 end
