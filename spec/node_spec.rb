@@ -1,4 +1,5 @@
 require 'spec_helper'
+
 require './lib/node'
 
 RSpec.describe Node do
