@@ -47,6 +47,14 @@ class LinkedList
     end
   end
 
+  def includes?(node_data)
+    if @head.data == node_data
+      return true
+    else
+      check_node_data(@head.next_node, node_data)
+    end
+  end
+
   def count
     if empty?
       return 0
@@ -66,6 +74,15 @@ class LinkedList
   end
 
   private
+
+  def check_node_data(node, node_data)
+    if node.data == node_data
+      return true
+    elsif node.tail?
+      return false
+    end
+    check_node_data(node.next_node, node_data)
+  end
 
   def locate_node(node, position, count = 0)
     if position == count
