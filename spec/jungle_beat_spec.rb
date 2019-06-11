@@ -19,13 +19,14 @@ RSpec.describe JungleBeat do
     end
 
     it '.append' do
-      @jungle_beat.append.append("deep doo ditt")
+      @jungle_beat.append("deep doo ditt")
 
       expect(@jungle_beat.list.head.data).to eq("deep")
       expect(@jungle_beat.list.head.next_node.data).to eq("doo")
     end
 
     it '.count' do
+      @jungle_beat.append("deep doo ditt")
       @jungle_beat.append("woo hoo shu")
 
       expect(@jungle_beat.count).to eq(6)
