@@ -5,11 +5,18 @@ class LinkedList
     @head = head
   end
 
-  def append(node)
+  def prepend(data)
+    node = Node.new(data)
+
+    node.next_node = @head
+    @head = node
+  end
+
+  def append(data)
     if @head.nil?
-      @head = node
+      @head = Node.new(data)
     else
-      @head.append(node)
+      @head.append(data)
     end
   end
 
