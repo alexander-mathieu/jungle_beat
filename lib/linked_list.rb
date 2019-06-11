@@ -33,22 +33,32 @@ class LinkedList
   end
 
   def last_node(node)
-    return node if node.tail?
-    last_node(node.next_node)
+    if node.tail?
+      return node
+    else
+      last_node(node.next_node)
+    end
   end
 
   # def find(position, count)
   # end
 
   def count
-    return 0 if empty?
-    count_node(@head, 1)
+    if empty?
+      return 0
+    else
+      count_node(@head, 1)
+    end
   end
 
   def to_string
-    # return "" if empty?
-    return @head.data if head.tail?
-    stringify_node(@head.next_node, @head.data)
+    if empty?
+      return ""
+    elsif @head.tail?
+      return @head.data
+    else
+      stringify_node(@head.next_node, @head.data)
+    end
   end
 
   private
@@ -62,8 +72,11 @@ class LinkedList
   end
 
   def stringify_node(node, sentence)
-    return concat(sentence, node) if node.tail?
-    stringify_node(node.next_node, concat(sentence, node))
+    if node.tail?
+      return concat(sentence, node)
+    else
+      stringify_node(node.next_node, concat(sentence, node))
+    end
   end
 
   def concat(sentence, node)
@@ -71,8 +84,11 @@ class LinkedList
   end
 
   def count_node(node, counter)
-    return counter if node.tail?
-    count_node(node.next_node, counter += 1)
+    if node.tail?
+      return counter
+    else
+      count_node(node.next_node, counter += 1)
+    end
   end
 
   def set_head(data)
