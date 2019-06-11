@@ -31,5 +31,15 @@ RSpec.describe JungleBeat do
 
       expect(@jungle_beat.count).to eq(6)
     end
+
+    it '.play' do
+      @jungle_beat.append("deep doo ditt woo hoo shu")
+      @jungle_beat.append("deep doo ditt woo hoo shu")
+      @jungle_beat.append("deep doo ditt woo hoo shu")
+      @jungle_beat.append("deep doo ditt woo hoo shu")
+      @jungle_beat.append("deep doo ditt woo hoo shu")
+
+      expect(@jungle_beat.play).to eq("")
+    end
   end
 end

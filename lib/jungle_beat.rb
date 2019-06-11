@@ -14,6 +14,12 @@ class JungleBeat
     @list.count
   end
 
+  def play
+    beats = @list.to_string
+
+    `say -r 200 #{beats}`
+  end
+
   private
 
   def new_linked_list
