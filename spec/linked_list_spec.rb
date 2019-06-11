@@ -49,6 +49,16 @@ RSpec.describe LinkedList do
       expect(@linked_list.to_string).to eq('Node 1 Node 2')
     end
 
+    it '.last_node' do
+      @linked_list.append('Node 1')
+      node = @linked_list.head
+
+      @linked_list.append('Node 2')
+      @linked_list.append('Node 3')
+
+      expect(@linked_list.last_node(node).data).to eq('Node 3')
+    end
+
     it '.prepend' do
       @linked_list.append('Node 1')
       @linked_list.append('Node 2')
@@ -75,7 +85,7 @@ RSpec.describe LinkedList do
       @linked_list.append('Node 5')
 
       expect(@linked_list.find(2, 1)).to eq('Node 3')
-      expect(@linked_list.find(1, 3)).to eq('Node 2, Node 3, Node 4')
+      expect(@linked_list.find(1, 3)).to eq('Node 2 Node 3 Node 4')
     end
 
     it '.includes?' do
