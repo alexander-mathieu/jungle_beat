@@ -46,13 +46,9 @@ class LinkedList
   end
 
   def to_string
-    string = ""
-
-    if @head.nil?
-      string
-    else
-      @head.to_string(string)
-    end
+    # return "" if empty?
+    return @head.data if head.tail?
+    stringify_node(@head.next_node, @head.data)
   end
 
   private
@@ -63,6 +59,15 @@ class LinkedList
     else
       locate_node(node.next_node, position, counter += 1)
     end
+  end
+
+  def stringify_node(node, sentence)
+    return concat(sentence, node) if node.tail?
+    stringify_node(node.next_node, concat(sentence, node))
+  end
+
+  def concat(sentence, node)
+    "#{sentence} #{node.data}"
   end
 
   def count_node(node, counter)
