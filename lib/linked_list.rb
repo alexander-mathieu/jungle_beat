@@ -30,14 +30,6 @@ class LinkedList
     end
   end
 
-  def last_node(node)
-    if node.tail?
-      return node
-    else
-      last_node(node.next_node)
-    end
-  end
-
   def find(start_position, count)
     node = locate_node(@head, start_position)
     if count == 1
@@ -52,6 +44,21 @@ class LinkedList
       return true
     else
       check_node_data(@head.next_node, node_data)
+    end
+  end
+
+  def pop
+    old_tail = last_node(@head)
+    new_tail = locate_node(@head, count - 2)
+    new_tail.next_node = nil
+    old_tail.data
+  end
+
+  def last_node(node)
+    if node.tail?
+      return node
+    else
+      last_node(node.next_node)
     end
   end
 
