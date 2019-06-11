@@ -19,5 +19,9 @@ RSpec.describe Node do
     it '.next_node' do
       expect(@node.next_node).to eq(nil)
     end
+
+    it '.tail?' do
+      expect(@node.tail?).to eq(true)
+    end
   end
 end
