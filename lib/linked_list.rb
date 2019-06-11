@@ -10,15 +10,13 @@ class LinkedList
   end
 
   def prepend(data)
-    node = Node.new(data)
-
+    node = new_node(data)
     node.next_node = @head
     @head = node
   end
 
   def insert(position, data)
-    node = Node.new(data)
-
+    node = new_node(data)
     next_node = locate_node(@head, position)
     locate_node(@head, position - 1).next_node = node
     node.next_node = next_node
