@@ -7,21 +7,8 @@ class Node
     @next_node = nil
   end
 
-  def append(data)
-    if @next_node.nil?
-      @next_node = Node.new(data)
-    else
-      @next_node.append
-    end
-  end
-
-  def count(total)
-    if @next_node.nil?
-      total
-    else
-      total += 1
-      @next_node.count(total)
-    end
+  def tail?
+    @next_node.nil?
   end
 
   def to_string(string)
