@@ -12,6 +12,14 @@ class LinkedList
     @head = node
   end
 
+  def insert(position, data)
+    node = Node.new(data)
+
+    next_node = locate_node(@head, position)
+    locate_node(@head, position - 1).next_node = node
+    node.next_node = next_node
+  end
+
   def append(data)
     if @head.nil?
       @head = Node.new(data)
@@ -35,6 +43,16 @@ class LinkedList
       string
     else
       @head.to_string(string)
+    end
+  end
+
+  private
+
+  def locate_node(node, position, counter = 0)
+    if position == counter
+      return node
+    else
+      locate_node(node.next_node, position, counter += 1)
     end
   end
 end
