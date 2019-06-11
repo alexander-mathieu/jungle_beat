@@ -5,10 +5,6 @@ require './lib/linked_list'
 
 RSpec.describe LinkedList do
   before :each do
-    @node_1      = Node.new('Node 1')
-    @node_2      = Node.new('Node 2')
-    @node_3      = Node.new('Node 3')
-
     @linked_list = LinkedList.new
   end
 
@@ -22,51 +18,51 @@ RSpec.describe LinkedList do
     end
 
     it '.append' do
-      @linked_list.append(@node_1)
+      @linked_list.append('Node 1')
 
-      expect(@linked_list.head).to eq(@node_1)
+      expect(@linked_list.head.data).to eq('Node 1')
       expect(@linked_list.head.next_node).to eq(nil)
 
-      @linked_list.append(@node_2)
+      @linked_list.append('Node 2')
 
-      expect(@linked_list.head).to eq(@node_1)
-      expect(@linked_list.head.next_node).to eq(@node_2)
+      expect(@linked_list.head.data).to eq('Node 1')
+      expect(@linked_list.head.next_node.data).to eq('Node 2')
     end
 
     it '.count' do
-      @linked_list.append(@node_1)
+      @linked_list.append('Node 1')
 
       expect(@linked_list.count).to eq(1)
 
-      @linked_list.append(@node_2)
+      @linked_list.append('Node 2')
 
       expect(@linked_list.count).to eq(2)
     end
 
     it '.to_string' do
-      @linked_list.append(@node_1)
+      @linked_list.append('Node 1')
 
       expect(@linked_list.to_string).to eq('Node 1')
 
-      @linked_list.append(@node_2)
+      @linked_list.append('Node 2')
 
       expect(@linked_list.to_string).to eq('Node 1 Node 2')
     end
 
     it '.prepend' do
-      @linked_list.append(@node_1)
-      @linked_list.append(@node_2)
+      @linked_list.append('Node 1')
+      @linked_list.append('Node 2')
 
-      @linked_list.prepend(@node_3)
+      @linked_list.prepend('Node 3')
 
-      expect(@linked_list.to_string).to eq('Node 3 Node 2 Node 1')
+      expect(@linked_list.to_string).to eq('Node 3 Node 1 Node 2')
     end
 
     it '.insert' do
-      @linked_list.append(@node_1)
-      @linked_list.append(@node_2)
+      @linked_list.append('Node 1')
+      @linked_list.append('Node 2')
 
-      @linked_list.insert(1, @node_3)
+      @linked_list.insert(1, 'Node 3')
 
       expect(@linked_list.to_string).to eq('Node 1 Node 3 Node 2')
     end
